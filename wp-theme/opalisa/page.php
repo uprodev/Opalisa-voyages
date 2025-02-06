@@ -2,6 +2,6 @@
 
 get_header();
 
-get_template_part('templates/flexible');
+ echo get_the_content();
 
 get_footer();

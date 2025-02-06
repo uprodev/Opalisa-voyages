@@ -14,7 +14,8 @@ function theme_register_nav_menu(){
         'footer-menu'  => 'Footer',
        )
     );
-	add_theme_support( 'post-thumbnails'); 
+	add_theme_support( 'post-thumbnails');
+    add_theme_support( 'woocommerce');
 }
 
 

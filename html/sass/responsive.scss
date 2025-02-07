@@ -2,7 +2,7 @@
   .content-width{
     width: 1200px;
   }
-  .home-banner h1 {
+  .home-banner h1, .product-banner h1 {
     font-size: 40px;
     line-height: 1.2;
   }
@@ -19,6 +19,28 @@
   footer .text{
     padding-right: 20px;
   }
+  .product .main {
+    width: calc(100% - 345px);
+  }
+  .product .item-content .city-block {
+    width: calc(50% - 140px);
+  }
+  .contact .content-width{
+    min-width: inherit;
+  }
+  .contact .text p{
+    margin-bottom: 30px;
+  }
+  .contact figure .title {
+    left: 30px;
+    bottom: 30px;
+    right: 30px;
+  }
+  .page-contact header .content-width{
+    .logo-wrap{
+      padding-left: 30px;
+    }
+  }
 }
 @media (max-width: 1279px){
   .content-width{
@@ -27,6 +49,18 @@
   h2{
     font-size: 26px;
     line-height: 1.2;
+  }
+  .product .aside {
+    width: 270px;
+  }
+  .product .main {
+    width: calc(100% - 290px);
+  }
+  .product .item-content .right-item{
+    width: 250px;
+  }
+  .product .item-content .left-item {
+    width: calc(100% - 260px);
   }
 }
 @media (max-width:1199px) {
@@ -51,6 +85,18 @@
   footer .item-4 {
     width: calc(100% - 25% - 23.5% - 18% - 60px);
   }
+  .product .aside{
+    width: 100%;
+    order: 2;
+    margin-top: 20px;
+  }
+  .product .main{
+    width: 100%;
+    order: 1;
+  }
+  main{
+    overflow: hidden;
+  }
 }
 
 @media (max-width:991px) {
@@ -63,7 +109,7 @@
   .home-banner .bottom h6{
     width: 65px;
   }
-  .home-banner h1 {
+  .home-banner h1, .product-banner h1 {
     font-size: 30px;
   }
   .best-offers .title .left{
@@ -94,6 +140,22 @@
   }
   .text-img .content{
     padding: 20px;
+  }
+  .product .item-content{
+    grid-gap: 10px;
+  }
+  .product .item-content .left-item{
+    width: 100%;
+  }
+  .product .item-content .right-item{
+    width: 100%;
+  }
+  .contact .text{
+    width: 100%;
+    padding-left: 0;
+  }
+  .contact figure{
+    width: 100%;
   }
 }
 
@@ -149,7 +211,7 @@
   header .content-width{
     padding: 30px 20px 0;
   }
-  .home-banner h1 {
+  .home-banner h1, .product-banner h1 {
     font-size: 26px;
   }
   .form-banner .nice-select{
@@ -207,5 +269,31 @@
   }
   .text-img h2{
     margin-bottom: 20px;
+  }
+  .product .item-content .city-block{
+    width: 100%;
+  }
+  .product .item-content .fly-wrap{
+    grid-gap: 10px;
+  }
+  .product .item-content .fly{
+    width: 100%;
+    height: 30px;
+  }
+  .product-banner .content-width{
+    padding: 40px 20px;
+  }
+  .product{
+    padding: 30px 0 50px;
+  }
+  .form-contact .input-wrap{
+    width: 100%;
+  }
+  .contact figure .title{
+    font-size: 24px;
+    line-height: 1.2;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
   }
 }

@@ -66,3 +66,19 @@ function my_acf_google_map_api_key() {
     acf_update_setting( 'google_api_key', $key_map );
 }
 add_action( 'acf/init', 'my_acf_google_map_api_key' );
+
+
+function register_faq_cpt() {
+    register_post_type('faq', [
+        'labels'      => [
+            'name'          => 'FAQs',
+            'singular_name' => 'FAQ',
+        ],
+        'public'      => true,
+        'has_archive' => true,
+        'supports'    => ['title', 'editor'],
+        'menu_icon'   => 'dashicons-editor-help',
+    ]);
+}
+add_action('init', 'register_faq_cpt');
+

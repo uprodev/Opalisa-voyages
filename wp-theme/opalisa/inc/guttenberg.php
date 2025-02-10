@@ -52,3 +52,21 @@ function voyager_register_blocks() {
     ));
 }
 add_action('acf/init', 'voyager_register_blocks' );
+
+
+/* Offers Block */
+
+function cta_register_blocks() {
+    if( ! function_exists('acf_register_block') )
+        return;
+    acf_register_block( array(
+        'name'          => 'cta',
+        'title'         => 'CTA',
+        'render_template'   => 'templates/guttenberg/cta.php',
+        'category'      => 'custom_blocks',
+        'icon'          => 'external',
+        'mode'          => 'edit',
+        'keywords'      => array( 'profile', 'user', 'author' )
+    ));
+}
+add_action('acf/init', 'cta_register_blocks' );

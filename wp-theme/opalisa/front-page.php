@@ -7,26 +7,7 @@ get_header();
 
 
 
-<section class="text-img">
-    <div class="content-width">
-        <div class="content">
-            <div class="text">
-                <h2>Comment trouver des vols sur les périodes de vacances scolaires ?</h2>
-                <figure>
-                    <img src="img/img-3.jpg" alt="">
-                </figure>
-                <p>Lorem ipsum dolor sit amet consectetur. Amet tristique et varius lectus. Quis enim tincidunt vel sagittis quis. Libero dignissim nec arcu adipiscing orci adipiscing nunc euismod. Enim mus sit malesuada laoreet pellentesque diam elementum.</p>
-                <p>Lorem ipsum dolor sit amet consectetur. Amet tristique et varius lectus. Quis enim tincidunt vel sagittis quis. Libero dignissim nec arcu adipiscing orci adipiscing nunc euismod. Enim mus sit malesuada laoreet pellentesque diam elementum.</p>
-                <div class="btn-wrap">
-                    <a href="#" class="btn-arrow">Découvrir nos offres <i class="fa-solid fa-arrow-right-long"></i></a>
-                </div>
-            </div>
-            <figure>
-                <img src="img/img-3.jpg" alt="">
-            </figure>
-        </div>
-    </div>
-</section>
+
 
 <section class="faq">
     <div class="content-width">

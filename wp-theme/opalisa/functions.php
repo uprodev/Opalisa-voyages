@@ -59,3 +59,5 @@ function custom_block_category( $cats ) {
     return $cats;
 
 }
+
+add_filter('wpcf7_autop_or_not', '__return_false');

@@ -18,7 +18,7 @@ $form = get_field('form_id');
             <?php if($form) {
                 echo do_shortcode('[contact-form-7 id="'.$form->ID.'"]');
             }?>
-            
+
             <?php if($text){ ?>
                 <p><?= $text;?></p>
             <?php } ?>

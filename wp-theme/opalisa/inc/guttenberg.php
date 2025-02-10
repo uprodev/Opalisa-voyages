@@ -16,3 +16,21 @@ function hb_register_blocks() {
     ));
 }
 add_action('acf/init', 'hb_register_blocks' );
+
+
+/* Offers Block */
+
+function offers_register_blocks() {
+    if( ! function_exists('acf_register_block') )
+        return;
+    acf_register_block( array(
+        'name'          => 'offers',
+        'title'         => 'Offers',
+        'render_template'   => 'templates/guttenberg/offers.php',
+        'category'      => 'custom_blocks',
+        'icon'          => 'editor-table',
+        'mode'          => 'edit',
+        'keywords'      => array( 'profile', 'user', 'author' )
+    ));
+}
+add_action('acf/init', 'offers_register_blocks' );

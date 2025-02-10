@@ -2,7 +2,7 @@
 
 get_header();
 
-    echo get_the_content();
+    the_content();
     ?>
 
 <section class="travel">

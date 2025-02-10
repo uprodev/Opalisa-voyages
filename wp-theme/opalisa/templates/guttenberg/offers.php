@@ -29,7 +29,7 @@ $offers = get_field('offers');
                 <figure>
                     <p class="label">offre spéciale</p>
                     <a href="#">
-                        <img src="<?= get_template_directory_uri();?>/<?= get_template_directory_uri();?>/img/img-1-1.jpg" alt="">
+                        <img src="<?= get_template_directory_uri();?>/img/img-1-1.jpg" alt="">
                     </a>
                 </figure>
                 <div class="text">

@@ -14,7 +14,7 @@ $image = get_field('image');
     <?php } ?>
     <div class="content-width">
         <div class="content">
-            <?php if($title){ ?>}
+            <?php if($title){ ?>
                 <h2><?= $title;?></h2>
             <?php } ?>
 

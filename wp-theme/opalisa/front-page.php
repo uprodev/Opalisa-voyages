@@ -5,23 +5,7 @@ get_header();
     the_content();
     ?>
 
-<section class="travel">
-    <div class="bg">
-        <img src="img/img-2.jpeg" alt="">
-    </div>
-    <div class="content-width">
-        <div class="content">
-            <h2>Vous souhaitez voyager pendant les vacances scolaires ? </h2>
-            <ul>
-                <li><a href="#">Vacances de la Toussaint</a></li>
-                <li><a href="#">Vacances de Noël</a></li>
-                <li><a href="#">Vacances d’hiver</a></li>
-                <li><a href="#">Vacances de printemps</a></li>
-                <li><a href="#">Vacances d’été</a></li>
-            </ul>
-        </div>
-    </div>
-</section>
+
 
 <section class="text-img">
     <div class="content-width">

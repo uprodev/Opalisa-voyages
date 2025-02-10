@@ -36,7 +36,7 @@ function offers_register_blocks() {
 add_action('acf/init', 'offers_register_blocks' );
 
 
-/* Offers Block */
+/* Voyager Block */
 
 function voyager_register_blocks() {
     if( ! function_exists('acf_register_block') )
@@ -54,7 +54,7 @@ function voyager_register_blocks() {
 add_action('acf/init', 'voyager_register_blocks' );
 
 
-/* Offers Block */
+/* CTA Block */
 
 function cta_register_blocks() {
     if( ! function_exists('acf_register_block') )
@@ -70,3 +70,21 @@ function cta_register_blocks() {
     ));
 }
 add_action('acf/init', 'cta_register_blocks' );
+
+
+/* FAQs Block */
+
+function faq_register_blocks() {
+    if( ! function_exists('acf_register_block') )
+        return;
+    acf_register_block( array(
+        'name'          => 'faq',
+        'title'         => 'FAQs',
+        'render_template'   => 'templates/guttenberg/faq.php',
+        'category'      => 'custom_blocks',
+        'icon'          => 'format-chat',
+        'mode'          => 'edit',
+        'keywords'      => array( 'profile', 'user', 'author' )
+    ));
+}
+add_action('acf/init', 'faq_register_blocks' );

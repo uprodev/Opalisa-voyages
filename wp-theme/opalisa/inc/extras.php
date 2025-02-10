@@ -83,3 +83,10 @@ function register_faq_cpt() {
 }
 add_action('init', 'register_faq_cpt');
 
+function add_custom_body_class($classes) {
+    if (is_page(123)) {
+        $classes[] = 'page-contact';
+    }
+    return $classes;
+}
+add_filter('body_class', 'add_custom_body_class');

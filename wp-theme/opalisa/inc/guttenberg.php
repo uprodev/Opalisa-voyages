@@ -88,3 +88,21 @@ function faq_register_blocks() {
     ));
 }
 add_action('acf/init', 'faq_register_blocks' );
+
+
+/* Contacts Block */
+
+function contacts_register_blocks() {
+    if( ! function_exists('acf_register_block') )
+        return;
+    acf_register_block( array(
+        'name'          => 'contacts',
+        'title'         => 'Contacts',
+        'render_template'   => 'templates/guttenberg/contacts.php',
+        'category'      => 'custom_blocks',
+        'icon'          => 'phone',
+        'mode'          => 'edit',
+        'keywords'      => array( 'profile', 'user', 'author' )
+    ));
+}
+add_action('acf/init', 'contacts_register_blocks' );

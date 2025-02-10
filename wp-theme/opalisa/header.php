@@ -18,12 +18,17 @@
     <div class="top-line">
         <div class="content-width">
             <div class="logo-wrap">
-                <a href="index.html"><img src="img/logo.svg" alt=""></a>
+                <?php $logo = get_field('logo', 'option'); ?>
+                <a href="<?= get_home_url();?>">
+                    <?php if($logo):?>
+                        <img src="<?= $logo['url'];?>" alt="<?= $logo['alt'];?>">
+                    <?php endif; ?>
+                </a>
             </div>
             <div class="right">
-                <a href="#">
-                    <img src="img/icon-1.svg" alt="">
-                    <span></span>
+                <a href="<?= wc_get_cart_url();?>">
+                    <img src="<?= get_template_directory_uri();?>/img/icon-1.svg" alt="cart">
+                    <span><?= WC()->cart->get_cart_contents_count()==0?'':WC()->cart->get_cart_contents_count(); ?></span>
                 </a>
             </div>
         </div>

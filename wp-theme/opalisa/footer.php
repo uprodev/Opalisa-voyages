@@ -1,51 +1,72 @@
+<?php
+
+$logo = get_field('footer_logo', 'option');
+$slogan = get_field('slogan', 'option');
+$title_menu = get_field('title_menu', 'option');
+$title_menu_social = get_field('title_menu_social', 'option');
+$title_form = get_field('title_form', 'option');
+$social_networks = get_field('social_networks', 'option');
+$form = get_field('form_id', 'option');
+$copyright = get_field('copyright', 'option');
+
+?>
+
 </main>
 
 <footer>
     <div class="content-width">
         <div class="item item-1">
             <div class="logo-wrap">
-                <a href="index.html">
-                    <img src="img/logo-footer.svg" alt="">
+                <a href="<?= get_home_url();?>">
+                    <?php if($logo):?>
+                        <img src="<?= $logo['url'];?>" alt="<?= $logo['alt'];?>">
+                    <?php endif; ?>
                 </a>
             </div>
-            <div class="text">
-                <p>Le bonheur n’est pas une destination à atteindre : c’est une manière de voyager</p>
-            </div>
+            <?php if($slogan):?>
+                <div class="text">
+                    <p><?= $slogan;?></p>
+                </div>
+            <?php endif; ?>
         </div>
         <div class="item item-2">
-            <h6>Découvrir</h6>
-            <ul>
-                <li><a href="#">Qui sommes-nous ?</a></li>
-                <li><a href="#">Contactez-nous</a></li>
-                <li><a href="#">FAQ</a></li>
-            </ul>
+            <?= $title_menu?'<h6>'.$title_menu.'</h6>':'';?>
+            <?php wp_nav_menu([
+                'theme_location' => 'footer-menu',
+                'container' => false,
+                'menu_class' => '',
+            ]);?>
         </div>
         <div class="item item-3">
-            <h6>Abonnez-vous</h6>
-            <ul class="soc">
-                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-            </ul>
+            <?= $title_menu_social?'<h6>'.$title_menu_social.'</h6>':'';?>
+            <?php if($social_networks):?>
+                <ul class="soc">
+                    <?php foreach($social_networks as $network):?>
+                        <li><a href="<?= $network['url'];?>" target="_blank"><i class="fa-brands fa-<?= $network['fa-class'];?>"></i></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
         </div>
         <div class="item item-4">
-            <h6>Soyez prévenu des bons plans</h6>
-            <form action="#" class="form-subscribe">
-                <label for="email"></label>
-                <input type="email" name="email" id="email" placeholder="Votre email">
-                <button class="btn" type="submit"><i class="fa-regular fa-arrow-right"></i></button>
-            </form>
+            <?= $title_form?'<h6>'.$title_form.'</h6>':'';?>
+            <?php if($form) {
+                echo do_shortcode('[contact-form-7 id="'.$form->ID.'"]');
+            }?>
+
         </div>
 
         <div class="bottom">
             <div class="left">
-                <ul>
-                    <li><a href="#">Conditions générales de vente</a></li>
-                    <li><a href="#">Mentions légales</a></li>
-                </ul>
+                <?php wp_nav_menu([
+                    'theme_location' => 'footer-bottom-menu',
+                    'container' => false,
+                    'menu_class' => '',
+                ]);?>
             </div>
             <div class="right">
-                <p>Droits d'auteur © 2025. Opalisa, Tous droits réservés.</p>
+                <?php if($copyright):?>
+                    <p><?= $copyright;?></p>
+                <?php endif; ?>
             </div>
         </div>
     </div>

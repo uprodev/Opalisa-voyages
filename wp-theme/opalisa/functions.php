@@ -61,3 +61,53 @@ function custom_block_category( $cats ) {
 }
 
 add_filter('wpcf7_autop_or_not', '__return_false');
+
+
+function custom_ticket_search_query($query) {
+    if (!is_admin() && is_shop() && isset($_GET['origin']) && !empty($_GET['origin'])) {
+        $meta_query = [];
+
+        if (!empty($_GET['origin'])) {
+            $meta_query[] = [
+                'key'     => 'origin',
+                'value'   => sanitize_text_field($_GET['origin']),
+                'compare' => 'LIKE'
+            ];
+        }
+
+        if (!empty($_GET['destination'])) {
+            $meta_query[] = [
+                'key'     => 'destination',
+                'value'   => sanitize_text_field($_GET['destination']),
+                'compare' => 'LIKE'
+            ];
+        }
+
+        if (!empty($_GET['holiday'])) {
+            $meta_query[] = [
+                'key'     => 'holiday',
+                'value'   => sanitize_text_field($_GET['holiday']),
+                'compare' => '='
+            ];
+        }
+
+        if (!empty($_GET['passengers'])) {
+            $meta_query[] = [
+                'key'     => 'passengers',
+                'value'   => sanitize_text_field($_GET['passengers']),
+                'compare' => '='
+            ];
+        }
+
+        if (!empty($_GET['class'])) {
+            $meta_query[] = [
+                'key'     => 'ticket_class',
+                'value'   => array_map('sanitize_text_field', $_GET['class']),
+                'compare' => 'IN'
+            ];
+        }
+
+        $query->set('meta_query', $meta_query);
+    }
+}
+add_action('woocommerce_product_query', 'custom_ticket_search_query');

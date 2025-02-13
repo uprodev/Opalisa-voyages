@@ -59,7 +59,7 @@ $offers = get_field('offers');
                                 }?>
                             </ul>
                             <div class="btn-wrap">
-                                <a href="#" class="add-to-cart-btn btn-arrow" data-product_id="<?= $id;?>"><?= __('À partir de', 'opalisa');?> <?= ' '.$price;?> <i class="fa-solid fa-arrow-right-long"></i></a>
+                                <a href="#" class="add-to-cart-btn btn-arrow" data-product_id="<?= $id;?>"><?= __('À partir de ', 'opalisa');?> <?= $price;?> <i class="fa-solid fa-arrow-right-long"></i></a>
                             </div>
                         </div>
                     </div>

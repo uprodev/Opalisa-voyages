@@ -4,6 +4,10 @@ include 'inc/enqueue.php';     // add styles and scripts
 include 'inc/acf.php';         // custom acf functions
 include 'inc/extras.php';      // custom functions
 include 'inc/guttenberg.php';  // custom guttenberg blocks
+include 'inc/ajax-actions.php';// ajax actions
+include 'inc/woo.php';         // woocommerce actions
+
+
 
 add_action('after_setup_theme', 'theme_register_nav_menu');
 

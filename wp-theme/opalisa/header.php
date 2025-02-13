@@ -28,7 +28,9 @@
             <div class="right">
                 <a href="<?= wc_get_cart_url();?>">
                     <img src="<?= get_template_directory_uri();?>/img/icon-1.svg" alt="cart">
-                    <span><?= WC()->cart->get_cart_contents_count()==0?'':WC()->cart->get_cart_contents_count(); ?></span>
+                    <span class="count-product"><?= WC()->cart->get_cart_contents_count()==0?'':WC()
+                            ->cart->get_cart_contents_count();
+                    ?></span>
                 </a>
             </div>
         </div>

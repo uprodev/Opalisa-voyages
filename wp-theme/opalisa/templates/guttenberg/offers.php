@@ -30,6 +30,7 @@ $offers = get_field('offers');
                     $id = $post->ID;
                     $img = get_the_post_thumbnail_url($id);
                     $product = wc_get_product( $id );
+                    $offre = get_field('offre_speciale', $id);
 
                     $vacation = $product->get_attribute( 'vacation' );
                     $class = $product->get_attribute( 'class' );
@@ -42,7 +43,9 @@ $offers = get_field('offers');
 
                     <div class="item">
                         <figure>
-                            <p class="label">offre spéciale</p>
+                            <?php if($offre):?>
+                                <p class="label"><?= __('offre spéciale', 'opalisa');?></p>
+                            <?php endif; ?>
                             <a href="#" class="add-to-cart-btn" data-product_id="<?= $id;?>">
                                 <img src="<?= $img;?>" alt="">
                             </a>

@@ -217,6 +217,10 @@
   .pay-popup .popup-form .input-wrap-3 {
     width: 185px; }
 
+	.form-banner .input-wrap-submit, .home-banner .bottom{
+		margin-top: 0;
+	}
+	
   .pay-popup .popup-form .input-wrap-2 {
     width: 300px; } }
 @media (max-width: 575px) {

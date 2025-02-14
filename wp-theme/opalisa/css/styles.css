@@ -2000,6 +2000,52 @@ input[type=number] {
   line-height: 17px;
   text-align: center; }
 
+header .right a span{
+	font-size: 10px;
+	display: flex;
+	justify-content: center;
+	line-height: 1;
+	align-items: center;
+}
+
+.home-banner .bottom ul label{
+	border: 1px solid #9c5e42;
+    border-radius: 40px;
+    color: #191919;
+    font-size: 14px;
+    line-height: 28px;
+    padding: 0 11px;
+    display: inline-block;
+	 -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+	cursor: pointer;
+}
+
+.home-banner .bottom ul input:checked + label{
+	    background: #191919;
+    color: #fff;
+    border-color: #191919;
+}
+.home-banner .bottom ul label:hover{
+	background: #9c5e42;
+    color: #fff;
+    border-color: #9c5e42;
+}
+.home-banner .bottom{
+	margin-top: 10px;
+	position: relative;
+	z-index: 5;
+}
+.form-banner .input-wrap-submit{
+	margin-top: -60px;
+}
+.home-banner .form-wrap{
+	padding-bottom: 30px;
+}
+
+.best-offers .btn-wrap .amount{
+	margin-left: 5px;
+}
 /*--------------------------END-CART-PAGE---------------------------------*/
 
 /*# sourceMappingURL=styles.css.map */

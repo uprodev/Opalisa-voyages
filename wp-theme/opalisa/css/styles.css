@@ -166,7 +166,7 @@ header .right a span {
   border-radius: 16px;
   position: relative;
   padding: 16px;
-  z-index: 10; }
+  z-index: 99; }
 .home-banner .bg {
   border-radius: 16px; }
 .home-banner .bg img {

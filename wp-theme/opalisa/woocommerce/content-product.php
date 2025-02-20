@@ -23,45 +23,89 @@ global $product;
 if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	return;
 }
+$id = $product->get_id();
+
+$depart = get_field('ticket_from', $id);
+$arret = get_field('ticket_to', $id);
+$date_departure = get_field('date_departure', $id);
+$date_back = get_field('date_back', $id);
+$company = get_field('company', $id);
 ?>
-<li <?php wc_product_class( '', $product ); ?>>
-	<?php
-	/**
-	 * Hook: woocommerce_before_shop_loop_item.
-	 *
-	 * @hooked woocommerce_template_loop_product_link_open - 10
-	 */
-	do_action( 'woocommerce_before_shop_loop_item' );
+<div class="item-content">
+    <div class="left-item">
+        <h6 class="name">ALLER <?php if($company):?><img src="<?= $company['url'];?>" alt="<?= $company['alt'];?>"><?php endif;?> AF842</h6>
+        <div class="fly-wrap">
+            <div class="city-block-1 city-block">
+                <h6 class="city"><?= $depart;?></h6>
+                <p><?= $date_departure;?></p>
+                <p>8h20</p>
+            </div>
+            <div class="fly">
+                <div class="line"></div>
+                <div class="fly-content">
+                    <p>09h17</p>
+                    <figure>
+                        <img src="<?= get_template_directory_uri();?>/img/icon-4.svg" alt="">
+                    </figure>
+                    <p>2 escales</p>
+                    <span class="tooltip">
+												<i class="fa-solid fa-circle-info"></i>
+												<span class="tooltip-text">
+												<span class="text">Durée de l’escale à Paris : 1h40</span>
+												<span class="text">Durée de l’escale à Madrid : 2h10</span>
+											</span>
+											</span>
+                </div>
+            </div>
+            <div class="city-block-2 city-block">
+                <h6 class="city"><?= $arret;?></h6>
+                <p><?= $date_back;?></p>
+                <p>17h37</p>
+            </div>
+        </div>
+        <div class="full-line"></div>
+        <h6 class="name">retour <?php if($company):?><img src="<?= $company['url'];?>" alt="<?= $company['alt'];?>"><?php endif;?> AF738</h6>
+        <div class="fly-wrap">
+            <div class="city-block-1 city-block">
+                <h6 class="city"><?= $arret;?></h6>
+                <p>28 janvier 2024</p>
+                <p>9h14</p>
+            </div>
+            <div class="fly">
+                <div class="line"></div>
+                <div class="fly-content">
+                    <p>08h34</p>
+                    <figure>
+                        <img src="<?= get_template_directory_uri();?>/img/icon-4.svg" alt="">
+                    </figure>
+                    <p>Direct</p>
+                </div>
+            </div>
+            <div class="city-block-2 city-block">
+                <h6 class="city"><?= $depart;?></h6>
+                <p>28 janvier 2024</p>
+                <p>16h32</p>
+            </div>
+        </div>
+    </div>
+    <div class="right-item">
+        <p class="img"><img src="<?= get_template_directory_uri();?>/img/icon-5-1.svg" alt="">Classe économique
+            <span class="tooltip">
+									<i class="fa-solid fa-circle-info"></i>
+									  <span class="tooltip-text">
+												<span class="text">Durée de l’escale à Paris : 1h40</span>
+												<span class="text">Durée de l’escale à Madrid : 2h10</span>
+									  </span>
+									</span>
+        </p>
+        <p class="img"><img src="<?= get_template_directory_uri();?>/img/icon-5-2.svg" alt="">Bagage en soute + cabine</p>
 
-	/**
-	 * Hook: woocommerce_before_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_show_product_loop_sale_flash - 10
-	 * @hooked woocommerce_template_loop_product_thumbnail - 10
-	 */
-	do_action( 'woocommerce_before_shop_loop_item_title' );
-
-	/**
-	 * Hook: woocommerce_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_template_loop_product_title - 10
-	 */
-	do_action( 'woocommerce_shop_loop_item_title' );
-
-	/**
-	 * Hook: woocommerce_after_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_template_loop_rating - 5
-	 * @hooked woocommerce_template_loop_price - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop_item_title' );
-
-	/**
-	 * Hook: woocommerce_after_shop_loop_item.
-	 *
-	 * @hooked woocommerce_template_loop_product_link_close - 5
-	 * @hooked woocommerce_template_loop_add_to_cart - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop_item' );
-	?>
-</li>
+        <div class="price">
+            <?php woocommerce_template_loop_price();?>
+        </div>
+        <p class="info">Plus que <b>12 billets</b></p>
+        <div class="btn-wrap">
+            <a href="#" class="btn-arrow">Réserver<i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+    </div>
+</div>

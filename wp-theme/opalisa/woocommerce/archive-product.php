@@ -17,27 +17,85 @@
 
 defined( 'ABSPATH' ) || exit;
 
-get_header( 'shop' );
+get_header();
 
-/**
- * Hook: woocommerce_before_main_content.
- *
- * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
- * @hooked woocommerce_breadcrumb - 20
- * @hooked WC_Structured_Data::generate_website_data() - 30
- */
-do_action( 'woocommerce_before_main_content' );
+?>
 
-/**
- * Hook: woocommerce_shop_loop_header.
- *
- * @since 8.6.0
- *
- * @hooked woocommerce_product_taxonomy_archive_header - 10
- */
-do_action( 'woocommerce_shop_loop_header' );
+<section class="product-banner">
+    <div class="bg">
+        <img src="<?= get_template_directory_uri();?>/img/bg-2.jpeg" alt="">
+    </div>
+    <div class="content-width">
+        <h1>Le bonheur n’est pas une destination à atteindre : c’est une manière de voyager</h1>
+    </div>
+</section>
 
-if ( woocommerce_product_loop() ) {
+<section class="product">
+    <div class="content-width">
+        <div class="aside">
+            <div class="item item-1">
+                <form action="#" class="form-delivery">
+                    <div class="input-wrap">
+                        <label for="city1">Ville de départ</label>
+                        <input type="text" id="city1" name="city1" placeholder="D’où partez vous ?">
+                    </div>
+                    <div class="input-wrap">
+                        <label for="city2">Ville d’arrivée</label>
+                        <input type="text" id="city2" name="city2" placeholder="Où allez vous ?">
+                    </div>
+                    <p>Quelles vacances scolaires ?</p>
+                    <div class="input-wrap-check">
+                        <div class="item-wrap">
+                            <input type="checkbox" id="check1" name="check1">
+                            <label for="check1">Vacances de la Toussaint</label>
+                        </div>
+                        <div class="item-wrap">
+                            <input type="checkbox" id="check2" name="check1">
+                            <label for="check2">Vacances de Noël</label>
+                        </div>
+                        <div class="item-wrap">
+                            <input type="checkbox" id="check3" name="check1">
+                            <label for="check3">Vacances d’hiver</label>
+                        </div>
+                        <div class="item-wrap">
+                            <input type="checkbox" id="check4" name="check1">
+                            <label for="check4">Vacances de printemps</label>
+                        </div>
+                        <div class="item-wrap">
+                            <input type="checkbox" id="check5" name="check1">
+                            <label for="check5">Vacances d’été</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="item item-2">
+                <h5>Autres dates ?</h5>
+                <h6>On vous renseigne ! </h6>
+                <div class="btn-wrap">
+                    <a href="#" class="btn-white">Nous contacter</a>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="select-line">
+                <div class="left-select">
+                    <p><span>9</span> résultats sur 68</p>
+                </div>
+                <div class="select">
+
+                    <div class="nice-select">
+                        <span class="current">Prix croissant</span>
+                        <ul class="list">
+                            <li data-value="0" class="option selected"><a href="#">Prix croissant</a></li>
+                            <li data-value="1" class="option"><a href="#">Prix croissant 1</a></li>
+                            <li data-value="2" class="option"><a href="#">Prix croissant 2</a></li>
+                            <li data-value="3" class="option"><a href="#">Prix croissant 3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="content-main">
+                <?php if ( woocommerce_product_loop() ) {
 
 	/**
 	 * Hook: woocommerce_before_shop_loop.
@@ -78,20 +136,12 @@ if ( woocommerce_product_loop() ) {
 	 * @hooked wc_no_products_found - 10
 	 */
 	do_action( 'woocommerce_no_products_found' );
-}
+}?>
+            </div>
+        </div>
+    </div>
+</section>
 
-/**
- * Hook: woocommerce_after_main_content.
- *
- * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
- */
-do_action( 'woocommerce_after_main_content' );
+<?php
 
-/**
- * Hook: woocommerce_sidebar.
- *
- * @hooked woocommerce_get_sidebar - 10
- */
-do_action( 'woocommerce_sidebar' );
-
-get_footer( 'shop' );
+get_footer();

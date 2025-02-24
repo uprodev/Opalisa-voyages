@@ -19,17 +19,28 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
+$ids = get_option( 'woocommerce_shop_page_id' );
+
+$title = get_field('title', $ids);
+$image = get_field('image', $ids);
+$title_contacts = get_field('title_contacts', $ids);
+$link = get_field('link', $ids);
+
 woocommerce_output_all_notices();
 
 ?>
 
 <section class="product-banner">
-    <div class="bg">
-        <img src="<?= get_template_directory_uri();?>/img/bg-2.jpeg" alt="">
-    </div>
-    <div class="content-width">
-        <h1>Le bonheur n’est pas une destination à atteindre : c’est une manière de voyager</h1>
-    </div>
+    <?php if ( $image ) : ?>
+        <div class="bg">
+            <img src="<?= $image['url'];?>" alt="<?= $image['alt'];?>">
+        </div>
+    <?php endif; ?>
+    <?php if ( $title ) : ?>
+        <div class="content-width">
+            <?= $title;?>
+        </div>
+    <?php endif; ?>
 </section>
 
 <section class="product">
@@ -41,11 +52,18 @@ woocommerce_output_all_notices();
                 </div>
             </div>
             <div class="item item-2">
-                <h5>Autres dates ?</h5>
-                <h6>On vous renseigne ! </h6>
-                <div class="btn-wrap">
-                    <a href="#" class="btn-white">Nous contacter</a>
-                </div>
+                <?= $title_contacts;?>
+
+                <?php if( $link ):
+                    $link_url = $link['url'];
+                    $link_title = $link['title'];
+                    $link_target = $link['target'] ? $link['target'] : '_self';
+                    ?>
+                    <div class="btn-wrap">
+                        <a class="btn-white" href="<?= esc_url($link_url); ?>" target="<?= esc_attr($link_target); ?>"><?= esc_html($link_title); ?></a>
+                    </div>
+                <?php endif; ?>
+
             </div>
         </div>
         <div class="main">

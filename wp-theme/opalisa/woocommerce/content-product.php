@@ -105,7 +105,7 @@ $company = get_field('company', $id);
         </div>
         <p class="info">Plus que <b>12 billets</b></p>
         <div class="btn-wrap">
-            <a href="#" class="btn-arrow">Réserver<i class="fa-solid fa-arrow-right-long"></i></a>
+            <a href="#" class="btn-arrow add-to-cart-btn" data-product_id="<?= $id;?>">Réserver<i class="fa-solid fa-arrow-right-long"></i></a>
         </div>
     </div>
 </div>

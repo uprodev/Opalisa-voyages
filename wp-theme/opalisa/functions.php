@@ -66,6 +66,16 @@ function custom_block_category( $cats ) {
 
 add_filter('wpcf7_autop_or_not', '__return_false');
 
+/* Checkout Class */
+
+function add_custom_body_class_for_checkout($classes) {
+    if (is_checkout()) {
+        $classes[] = 'page-cart';
+    }
+    return $classes;
+}
+add_filter('body_class', 'add_custom_body_class_for_checkout');
+
 
 function custom_ticket_search_query($query) {
     if (!is_admin() && is_shop() && isset($_GET['origin']) && !empty($_GET['origin'])) {

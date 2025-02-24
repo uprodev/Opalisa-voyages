@@ -2048,4 +2048,131 @@ header .right a span{
 }
 /*--------------------------END-CART-PAGE---------------------------------*/
 
+.product .item-1 .select2-selection--single {
+	    width: 100%;
+    outline: none !important;
+    border: none;
+    border-radius: 8px;
+    background: #f6ede4;
+    height: 56px;
+    line-height: 56px;
+    padding: 0 20px;
+    font-size: 16px;
+}
+
+.product .item-1 .select2-selection__rendered{
+	   height: 56px;
+    line-height: 56px;
+}
+
+.product .item-1  .select2-selection__arrow{
+	height: 56px;
+	right: 5px;
+}
+
+.select2-dropdown{
+	border-color: #f6ede4;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #eee;
+    color: #000;
+}
+.product .item h3{
+	    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    margin-bottom: 9px;
+}
+
+
+.product .item-content .right-item .price del  bdi{
+	
+    color: rgba(0, 16, 36, 0.72);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    text-align: left;
+    -webkit-text-decoration-line: line-through;
+    text-decoration-line: line-through;
+    padding-bottom: 5px;
+}
+
+.product .item-content .right-item .price ins bdi{
+	font-size: 32px;
+    font-weight: 600;
+    line-height: 39px;
+    margin-right: 10px;
+	text-decoration-line: none;
+}
+.product .item-content .right-item .price{
+	flex-direction: row-reverse;
+	display: flex;
+	grid-gap: 3px;
+	width: 100%;
+	justify-content: flex-end;
+}
+.product .item-content .right-item .price>.amount>bdi{
+	font-size: 32px;
+    font-weight: 600;
+    line-height: 39px;
+    margin-right: 10px;
+	text-decoration-line: none;
+}
+
+.product .item-content .right-item .price ins{
+	    
+	text-decoration-line: none;
+}
+
+.product .item-content .right-item .price del{
+	text-decoration-line: none;
+}
+
+.product .item-1 .bapf_body ul{
+	display: flex;
+	flex-wrap: wrap;
+	    grid-gap: 8px;
+}
+
+.product .item-1 .bapf_body ul li{
+	position: relative;
+}
+
+.product .item-1 .bapf_body ul li input{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.product .item-1 .bapf_body ul li label{
+	    border: 1px solid #9c5e42;
+    border-radius: 40px;
+    height: 30px;
+    line-height: 28px;
+    color: #001024;
+    font-size: 14px;
+    padding: 0 12px;
+    display: inline-block!important;
+    -webkit-transition: all .4sease;
+    transition: all .4sease;
+}
+
+.product .item-1 .bapf_body ul li input:hover + label {
+    background: #9c5e42;
+    color: #fff;
+    border-color: #9c5e42;
+}
+
+.product .item-1 .bapf_body ul li input:checked + label {
+    background: #191919;
+    color: #fff;
+    border-color: #191919;
+}
+
 /*# sourceMappingURL=styles.css.map */

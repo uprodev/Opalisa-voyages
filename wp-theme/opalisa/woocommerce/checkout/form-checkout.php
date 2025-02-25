@@ -29,6 +29,9 @@ if (!empty($cart)) {
     $product_id = $first_item['product_id'];
     $title_page =  esc_html($product->get_name());
     $img = get_the_post_thumbnail_url($product_id);
+    $escales = get_field('escales_fly', $product_id);
+    $bagage = get_field('bagage', $product_id);
+    $class = $product->get_attribute( 'class' );
 }
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
@@ -63,7 +66,22 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                             <input type="text" name="count" value="2" class="form-control"/>
                             <div class="btn-count btn-count-plus"><i class="fa-regular fa-arrow-right"></i></div>
                         </div>
-                        <p>Plus que <b>12 billets</b></p>
+                        <?php
+
+                        $qtyp = $product->get_stock_quantity();
+
+                        if( $qtyp > 12 ) {
+                            $text_qty = __('Plus que', 'opalisa') . ' <b>12 '. __('billets', 'opalisa') . '</b>';
+                        }elseif($qtyp == 1){
+                            $text_qty = '<b>1 '. __('billet', 'opalisa') . '</b>';
+                        }elseif($qtyp > 1 && $qtyp <= 12){
+                            $text_qty = '<b>'. $qtyp .' '. __('billets', 'opalisa') . '</b>';
+                        }else{
+                            $text_qty = '';
+                        }
+
+                        ?>
+                        <p><?= $text_qty;?></p>
                     </div>
                     <div class="item">
                         <h6>Assurance</h6>
@@ -325,43 +343,50 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                         <img src="<?= $img;?>" alt="">
                     </figure>
                     <div class="line-aside">
-                        <h6>Passagers</h6>
-                        <p>2 Adultes</p>
+                        <h6><?= __('Passagers', 'opalisa');?></h6>
+                        <p>2 <?= __('Adultes', 'opalisa');?></p>
                     </div>
+                    <?php if($bagage):?>
+                        <div class="line-aside">
+                            <h6><?= __('Bagages', 'opalisa');?></h6>
+                            <p><img src="<?= get_template_directory_uri();?>/img/icon-5-2.svg" alt="bagage"><?= $bagage; ?> <?= __('(par personne)', 'opalisa');?></p>
+                        </div>
+                    <?php endif;?>
+                    <?php if (!empty($class)):?>
+                        <div class="line-aside">
+                            <h6><?= __('Classe', 'opalisa');?></h6>
+                            <p><img src="<?= get_template_directory_uri();?>/img/icon-5-1.svg" alt=""><?= esc_html($class);?>
+                                <?php if($escales):?>
+                                    <span class="tooltip">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span class="tooltip-text">
+                                <?php foreach ($escales as $esl):?>
+                                    <span class="text"><?= $esl['escale'];?></span>
+                                <?php endforeach;?>
+                            </span>
+                        </span>
+                                <?php endif;?>
+                            </p>
+                        </div>
+                    <?php endif;?>
                     <div class="line-aside">
-                        <h6>Bagages</h6>
-                        <p><img src="img/icon-5-2.svg" alt="">Bagage en soute + cabine (par personne)</p>
-                    </div>
-                    <div class="line-aside">
-                        <h6>Classe</h6>
-                        <p><img src="img/icon-5-1.svg" alt="">Classe économique
-                            <span class="tooltip">
-												<i class="fa-solid fa-circle-info"></i>
-												<span class="tooltip-text">
-												<span class="text">Durée de l’escale à Paris : 1h40</span>
-												<span class="text">Durée de l’escale à Madrid : 2h10</span>
-											</span>
-									</span>
-                        </p>
-                    </div>
-                    <div class="line-aside">
-                        <h6>Assurance</h6>
+                        <h6><?= __('Assurance', 'opalisa');?></h6>
                         <div class="flex jc-space">
-                            <p>Annulation</p>
+                            <p><?= __('Annulation', 'opalisa');?></p>
                             <p>40,00 €/personne </p>
                         </div>
                     </div>
                     <div class="line-aside-total">
                         <div class="flex jc-space">
-                            <p>Prix normal</p>
+                            <p><?= __('Prix normal', 'opalisa');?></p>
                             <p>760,00 €/personne</p>
                         </div>
                         <div class="flex jc-space">
-                            <p>Prix Opalisa</p>
+                            <p><?= __('Prix Opalisa', 'opalisa');?></p>
                             <p>480,00 €/personne </p>
                         </div>
                         <div class="flex flex-total jc-space">
-                            <p>Prix final</p>
+                            <p><?= __('Prix final', 'opalisa');?></p>
                             <p>960,00 €</p>
                         </div>
                     </div>

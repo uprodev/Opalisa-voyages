@@ -29,11 +29,11 @@ $image = get_field('image');
             <form action="<?php echo esc_url(home_url('/shop/')); ?>" method="GET" class="form-banner">
                 <div class="input-wrap input-wrap-1">
                     <label for="origin"><?= __('Origine', 'opalisa');?></label>
-                    <input type="text" id="origin" name="origin" placeholder="<?= __('D’où partez vous ?', 'opalisa');?>" value="<?php echo esc_attr($_GET['origin'] ?? ''); ?>">
+                    <input type="text" id="origin" name="cpm_ticket_from" placeholder="<?= __('D’où partez vous ?', 'opalisa');?>" value="<?php echo esc_attr($_GET['origin'] ?? ''); ?>">
                 </div>
                 <div class="input-wrap input-wrap-2">
                     <label for="destination"><?= __('Destination', 'opalisa');?></label>
-                    <input type="text" id="destination" name="destination" placeholder="<?= __('Où allez vous ?', 'opalisa');?>" value="<?php echo esc_attr($_GET['destination'] ?? ''); ?>">
+                    <input type="text" id="destination" name="cpm_ticket_to" placeholder="<?= __('Où allez vous ?', 'opalisa');?>" value="<?php echo esc_attr($_GET['destination'] ?? ''); ?>">
                 </div>
                 <div class="input-wrap select-block input-wrap-3">
                     <label for="select-1"><?= __('Voyage durant les vacances scolaires ?', 'opalisa');?></label>
@@ -44,7 +44,7 @@ $image = get_field('image');
                     ]);
 
                     if (!empty($vacations) && !is_wp_error($vacations)): ?>
-                        <select id="select-1" name="holiday">
+                        <select id="select-1" name="vacation">
                             <option value="" disabled selected><?= __('Sélectionnez la période scolaire', 'opalisa'); ?></option>
                             <?php foreach ($vacations as $vacation): ?>
                                 <option value="<?= esc_attr($vacation->term_id); ?>"

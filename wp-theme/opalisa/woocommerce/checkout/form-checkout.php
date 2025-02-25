@@ -99,6 +99,15 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                             </div>
                         </div>
                     </div>
+                    <?php if ( $checkout->get_checkout_fields() ) : ?>
+
+                        <?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
+
+                            <?php do_action( 'woocommerce_checkout_billing' ); ?>
+
+                        <?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
+
+                    <?php endif; ?>
                     <div class="item">
                         <h6>Nombre de passagers</h6>
                         <div class="input-number ">

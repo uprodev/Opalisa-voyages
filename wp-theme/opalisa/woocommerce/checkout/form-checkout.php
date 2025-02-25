@@ -24,8 +24,11 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
 $cart = WC()->cart->get_cart();
 if (!empty($cart)) {
     $first_item = reset($cart);
-    $product_tit = $first_item['data'];
-    $title_page =  esc_html($product_tit->get_name());
+
+    $product = $first_item['data'];
+    $product_id = $first_item['product_id'];
+    $title_page =  esc_html($product->get_name());
+    $img = get_the_post_thumbnail_url($product_id);
 }
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
@@ -41,64 +44,9 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
         <div class="content-width">
             <div class="main">
                 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data" aria-label="<?php echo esc_attr__( 'Checkout', 'woocommerce' ); ?>">
-                    <div class="item-content">
-                        <div class="left-item">
-                            <h6 class="name">ALLER <img src="img/icon-3.svg" alt=""> AF842</h6>
-                            <div class="fly-wrap">
-                                <div class="city-block-1 city-block">
-                                    <h6 class="city">Paris</h6>
-                                    <p>13 janvier 2024</p>
-                                    <p>8h20</p>
-                                </div>
-                                <div class="fly">
-                                    <div class="line"></div>
-                                    <div class="fly-content">
-                                        <p>09h17</p>
-                                        <figure>
-                                            <img src="img/icon-4.svg" alt="">
-                                        </figure>
-                                        <p>2 escales</p>
-                                        <span class="tooltip">
-												<i class="fa-solid fa-circle-info"></i>
-												<span class="tooltip-text">
-												<span class="text">Durée de l’escale à Paris : 1h40</span>
-												<span class="text">Durée de l’escale à Madrid : 2h10</span>
-											</span>
-											</span>
-                                    </div>
-                                </div>
-                                <div class="city-block-2 city-block">
-                                    <h6 class="city">Mexico</h6>
-                                    <p>13 janvier 2024</p>
-                                    <p>17h37</p>
-                                </div>
-                            </div>
-                            <div class="full-line"></div>
-                            <h6 class="name">retour <img src="img/icon-3.svg" alt=""> AF738</h6>
-                            <div class="fly-wrap">
-                                <div class="city-block-1 city-block">
-                                    <h6 class="city">Mexico</h6>
-                                    <p>28 janvier 2024</p>
-                                    <p>9h14</p>
-                                </div>
-                                <div class="fly">
-                                    <div class="line"></div>
-                                    <div class="fly-content">
-                                        <p>08h34</p>
-                                        <figure>
-                                            <img src="img/icon-4.svg" alt="">
-                                        </figure>
-                                        <p>Direct</p>
-                                    </div>
-                                </div>
-                                <div class="city-block-2 city-block">
-                                    <h6 class="city">Paris</h6>
-                                    <p>28 janvier 2024</p>
-                                    <p>16h32</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    <?php get_template_part('templates/content-product', null, ['product' => $product_id]);?>
+
                     <?php if ( $checkout->get_checkout_fields() ) : ?>
 
                         <?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
@@ -374,7 +322,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
             <div class="aside">
                 <div class="item-aside">
                     <figure>
-                        <img src="img/img-5.jpg" alt="">
+                        <img src="<?= $img;?>" alt="">
                     </figure>
                     <div class="line-aside">
                         <h6>Passagers</h6>

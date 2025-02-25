@@ -24,9 +24,32 @@ jQuery(document).ready(function ($) {
                 $(document.body).trigger('wc_fragment_refresh');
                 $(document.body).trigger('wc_update_cart');
 
+                window.location.href = '/checkout/';
+
             }
         });
     })
 
 
+});
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector(".form-banner");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            let filters = [];
+            const params = new URLSearchParams(new FormData(form));
+
+            params.forEach((value, key) => {
+            if (value) {
+            filters.push(`${key}[${value}]`);
+        }
+    });
+
+    let url = form.action + "?filters=" + filters.join("|");
+        window.location.href = url;
+    });
 });

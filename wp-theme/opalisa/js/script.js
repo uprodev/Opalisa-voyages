@@ -2,7 +2,8 @@ jQuery(document).ready(function ($) {
 
   //SELECT
   $('.select select').niceSelect();
-	
+  $('.select-block select').niceSelect();
+
 	 $(document).ajaxComplete(function(){
  		$('.select select').niceSelect();
     });

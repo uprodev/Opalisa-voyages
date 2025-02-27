@@ -50,20 +50,11 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
                     <?php get_template_part('templates/content-product', null, ['product' => $product_id]);?>
 
-                    <?php if ( $checkout->get_checkout_fields() ) : ?>
-
-                        <?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
-
-                            <?php do_action( 'woocommerce_checkout_billing' ); ?>
-
-                        <?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
-
-                    <?php endif; ?>
                     <div class="item">
                         <h6>Nombre de passagers</h6>
                         <div class="input-number ">
                             <div class="btn-count btn-count-minus"><i class=" fa-regular fa-arrow-left"></i></div>
-                            <input type="text" name="count" value="2" class="form-control"/>
+                            <input type="text" name="count-passengers" value="2" class="form-control"/>
                             <div class="btn-count btn-count-plus"><i class="fa-regular fa-arrow-right"></i></div>
                         </div>
                         <?php
@@ -83,30 +74,17 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                         ?>
                         <p><?= $text_qty;?></p>
                     </div>
-                    <div class="item">
-                        <h6>Assurance</h6>
-                        <div class="input-wrap-check">
-                            <input type="radio" name="radio1" id="radio11">
-                            <label for="radio11">Aucune assurance</label>
-                        </div>
-                        <div class="input-wrap-check">
-                            <input type="radio" name="radio1" id="radio12" checked>
-                            <label for="radio12">Assurance annulation (40€)</label>
-                        </div>
-                        <div class="input-wrap-check">
-                            <input type="radio" name="radio1" id="radio13">
-                            <label for="radio13">Assurance multirisque (60€)
-                                <span class="tooltip">
-												<i class="fa-solid fa-circle-info"></i>
-												<span class="tooltip-text">
-												<span class="text">Durée de l’escale à Paris : 1h40</span>
-												<span class="text">Durée de l’escale à Madrid : 2h10</span>
-											</span>
-											</span>
-                            </label>
-                        </div>
-                        <p class="grey">Je confirme avoir lu et accepté les <a href="#">conditions générales</a></p>
-                    </div>
+
+                    <?php if ( $checkout->get_checkout_fields() ) : ?>
+
+                        <?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
+
+                            <?php do_action( 'woocommerce_checkout_billing' ); ?>
+
+                        <?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
+
+                    <?php endif; ?>
+
                     <div class="item">
                         <h6>Information pour le passager 1</h6>
                         <div class="flex mb-23">

@@ -17,3 +17,50 @@ function add_points_widget_to_fragment($fragments)
 }
 
 add_filter('add_to_cart_fragments', 'add_points_widget_to_fragment');
+
+
+add_filter('thwcfe_repeat_times', 'th34ed_override_repeat_count', 10, 3);
+function th34ed_override_repeat_count($rt, $name, $type){
+    global $woocommerce;
+    $cart_count = array();
+    $cart_object = WC()->cart->get_cart();
+
+    if($cart_object){
+        foreach($cart_object as $cart_item ) {
+            $qty = $cart_item['quantity'];
+            array_push($cart_count,$qty);
+        }
+    }
+
+    if(empty($cart_count)){
+        return $rt;
+    }
+
+    if($type == 'text'){
+
+        if($name === 'billing_first_name'){ // update your field name
+            $rt = max($cart_count);
+        }
+
+    }elseif($type == 'section'){
+
+        if($name === 'test_section'){ // update your section name
+            $rt = max($cart_count);
+        }
+
+    }
+
+    return $rt;
+}
+
+
+add_filter('thwcfe_email_display_field_html', 'override_thwcfe_email_display_field_html', 4, 10);
+
+function override_thwcfe_email_display_field_html($html, $type, $label, $value){
+
+    if($type == 'heading'){
+        $html = '<h3>' . $value . '</h3>';
+    }
+
+    return $html;
+}

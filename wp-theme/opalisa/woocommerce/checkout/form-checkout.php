@@ -281,8 +281,6 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                         <p>Billet non remboursable, non modifiable</p>
                     </div>
 
-
-<!--                <a href="#pay-popup" class="fancybox">Popup</a>-->
             </div>
             <div class="aside">
                 <div class="item-aside">

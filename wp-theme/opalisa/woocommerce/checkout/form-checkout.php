@@ -44,36 +44,36 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 <section class="cart-block">
     <div class="content-width">
         <h1><?= __('Votre voyage à ', 'opalisa');?><?= $title_page;?></h1>
+        <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data" aria-label="<?php echo esc_attr__( 'Checkout', 'woocommerce' ); ?>">
         <div class="content-width">
             <div class="main">
-                <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data" aria-label="<?php echo esc_attr__( 'Checkout', 'woocommerce' ); ?>">
 
                     <?php get_template_part('templates/content-product', null, ['product' => $product_id]);?>
 
                     <div class="item">
-                        <h6>Nombre de passagers</h6>
-                        <div class="input-number ">
-                            <div class="btn-count btn-count-minus"><i class=" fa-regular fa-arrow-left"></i></div>
-                            <input type="text" name="count-passengers" value="2" class="form-control"/>
-                            <div class="btn-count btn-count-plus"><i class="fa-regular fa-arrow-right"></i></div>
-                        </div>
-                        <?php
-
-                        $qtyp = $product->get_stock_quantity();
-
-                        if( $qtyp > 12 ) {
-                            $text_qty = __('Plus que', 'opalisa') . ' <b>12 '. __('billets', 'opalisa') . '</b>';
-                        }elseif($qtyp == 1){
-                            $text_qty = '<b>1 '. __('billet', 'opalisa') . '</b>';
-                        }elseif($qtyp > 1 && $qtyp <= 12){
-                            $text_qty = '<b>'. $qtyp .' '. __('billets', 'opalisa') . '</b>';
-                        }else{
-                            $text_qty = '';
-                        }
-
-                        ?>
-                        <p><?= $text_qty;?></p>
+                    <h6>Nombre de passagers</h6>
+                    <div class="input-number ">
+                        <div class="btn-count btn-count-minus"><i class=" fa-regular fa-arrow-left"></i></div>
+                        <input type="text" name="count-passengers" value="2" class="form-control"/>
+                        <div class="btn-count btn-count-plus"><i class="fa-regular fa-arrow-right"></i></div>
                     </div>
+                    <?php
+
+                    $qtyp = $product->get_stock_quantity();
+
+                    if( $qtyp > 12 ) {
+                        $text_qty = __('Plus que', 'opalisa') . ' <b>12 '. __('billets', 'opalisa') . '</b>';
+                    }elseif($qtyp == 1){
+                        $text_qty = '<b>1 '. __('billet', 'opalisa') . '</b>';
+                    }elseif($qtyp > 1 && $qtyp <= 12){
+                        $text_qty = '<b>'. $qtyp .' '. __('billets', 'opalisa') . '</b>';
+                    }else{
+                        $text_qty = '';
+                    }
+
+                    ?>
+                    <p><?= $text_qty;?></p>
+                </div>
 
                     <?php if ( $checkout->get_checkout_fields() ) : ?>
 
@@ -84,7 +84,6 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                         <?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
                     <?php endif; ?>
-
                     <div class="item">
                         <h6>Information pour le passager 1</h6>
                         <div class="flex mb-23">
@@ -177,7 +176,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                             </div>
                         </div>
                     </div>
-                    <div class="item">
+                    <div class="item" style="display: none;">
                         <h6>Information pour le passager 2</h6>
                         <div class="flex mb-23">
                             <p>Sexe :</p>
@@ -276,44 +275,15 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                         <label for="check">Je confirme que Opalisa Voyages n'est pas responsable dans le cas où les informations entrées ne sont pas identiques avec les informations présentes sur mon ou mes document(s) d'identité. <span>*</span> </label>
                     </div>
                     <div class="input-wrap-submit">
-                        <button class="btn-arrow" type="submit">Continuer · 960,00 €</button>
+                        <a href="#pay-popup" class="btn-arrow fancybox" type="submit">Continuer · <span
+                        class="total"><?= WC()->cart->get_total();?></span></a>
                     </div>
                     <div class="input-wrap-full text-center">
                         <p>Billet non remboursable, non modifiable</p>
                     </div>
 
-                    <?php if ( $checkout->get_checkout_fields() ) : ?>
 
-                        <?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
-
-                        <div class="col2-set" id="customer_details">
-                            <div class="col-1">
-                                <?php do_action( 'woocommerce_checkout_billing' ); ?>
-                            </div>
-
-                            <div class="col-2">
-                                <?php do_action( 'woocommerce_checkout_shipping' ); ?>
-                            </div>
-                        </div>
-
-                        <?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
-
-                    <?php endif; ?>
-
-                    <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
-
-                    <h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
-
-                    <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
-
-                    <div id="order_review" class="woocommerce-checkout-review-order">
-                        <?php do_action( 'woocommerce_checkout_order_review' ); ?>
-                    </div>
-
-                    <?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
-
-                </form>
-                <a href="#pay-popup" class="fancybox">Popup</a>
+<!--                <a href="#pay-popup" class="fancybox">Popup</a>-->
             </div>
             <div class="aside">
                 <div class="item-aside">
@@ -347,6 +317,13 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                             </p>
                         </div>
                     <?php endif;?>
+                    <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+
+                    <div id="order_review" class="woocommerce-checkout-review-order">
+                        <?php do_action( 'woocommerce_checkout_order_review' ); ?>
+                    </div>
+
+                    <?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
                     <div class="line-aside">
                         <h6><?= __('Assurance', 'opalisa');?></h6>
                         <div class="flex jc-space">
@@ -376,6 +353,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </section>
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>

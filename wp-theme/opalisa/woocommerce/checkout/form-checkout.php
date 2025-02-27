@@ -275,8 +275,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                         <label for="check">Je confirme que Opalisa Voyages n'est pas responsable dans le cas où les informations entrées ne sont pas identiques avec les informations présentes sur mon ou mes document(s) d'identité. <span>*</span> </label>
                     </div>
                     <div class="input-wrap-submit">
-                        <a href="#pay-popup" class="btn-arrow fancybox" type="submit">Continuer · <span
-                        class="total"><?= WC()->cart->get_total();?></span></a>
+                        <a href="#pay-popup" class="btn-arrow fancybox" type="submit">Continuer · <span class="total"><?= WC()->cart->get_total();?></span></a>
                     </div>
                     <div class="input-wrap-full text-center">
                         <p>Billet non remboursable, non modifiable</p>
@@ -324,36 +323,47 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                     </div>
 
                     <?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
-                    <div class="line-aside">
-                        <h6><?= __('Assurance', 'opalisa');?></h6>
-                        <div class="flex jc-space">
-                            <p><?= __('Annulation', 'opalisa');?></p>
-                            <p>40,00 €/personne </p>
-                        </div>
-                    </div>
-                    <div class="line-aside-total">
-                        <div class="flex jc-space">
-                            <p><?= __('Prix normal', 'opalisa');?></p>
-                            <p>760,00 €/personne</p>
-                        </div>
-                        <div class="flex jc-space">
-                            <p><?= __('Prix Opalisa', 'opalisa');?></p>
-                            <p>480,00 €/personne </p>
-                        </div>
-                        <div class="flex flex-total jc-space">
-                            <p><?= __('Prix final', 'opalisa');?></p>
-                            <p>960,00 €</p>
-                        </div>
-                    </div>
-                    <div class="info">
-                        <i class="fa-solid fa-circle-info"></i>
-                        <h6>Formalités administratives & sanitaires</h6>
-                        <p>Votre passeport doit être valide</p>
-                    </div>
+
                 </div>
             </div>
         </div>
         </form>
     </div>
 </section>
+<div id="pay-popup" class="pay-popup" style="display: none">
+    <div class="popup-main">
+        <h6><img src="img/icon-7.svg" alt="">Paiement</h6>
+        <form action="#" class="popup-form">
+            <div class="input-wrap input-wrap-1">
+                <label for="cart-number">Numéro de carte</label>
+                <input type="text" name="cart-number" id="cart-number" placeholder="1234 1234 1234 1234" class="cart-number">
+                <div class="icon">
+                    <img src="img/icon-8.svg" alt="">
+                </div>
+            </div>
+            <div class="input-wrap input-wrap-2">
+                <label for="cart-date">Date d’expiration</label>
+                <input type="text" name="cart-date" id="cart-date" placeholder="MM/AA" class="cart-date">
+            </div>
+            <div class="input-wrap input-wrap-3">
+                <label for="cart-cvc">CVC</label>
+                <input type="text" name="cart-cvc" id="cart-cvc" placeholder="123" class="cart-cvc">
+            </div>
+            <div class="text">
+                <p>Vos données personnelles seront utilisées pour le traitement de votre commande, vous accompagner au cours de votre visite du site web, et pour d’autres raisons décrites dans notre
+                    <a href="#">privacy policy</a>.</p>
+            </div>
+            <div class="input-wrap-full input-wrap-check-full input-wrap-check">
+                <input type="checkbox" name="check" id="check-popup">
+                <label for="check-popup">J'ai lu et j'accepte <a href="#">les termes et conditions*</a></label>
+            </div>
+            <div class="input-wrap-submit">
+                <button class="btn-arrow" type="submit">Continuer · 960,00 €</button>
+            </div>
+        </form>
+        <div class="input-wrap-full text-center">
+            <p>Billet non remboursable, non modifiable</p>
+        </div>
+    </div>
+</div>
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>

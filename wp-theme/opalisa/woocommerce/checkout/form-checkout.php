@@ -84,7 +84,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                         <?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
                     <?php endif; ?>
-                    <div class="item">
+                    <div class="item" style="display: none;">
                         <h6>Information pour le passager 1</h6>
                         <div class="flex mb-23">
                             <p>Sexe :</p>
@@ -275,7 +275,8 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                         <label for="check">Je confirme que Opalisa Voyages n'est pas responsable dans le cas où les informations entrées ne sont pas identiques avec les informations présentes sur mon ou mes document(s) d'identité. <span>*</span> </label>
                     </div>
                     <div class="input-wrap-submit">
-                        <a href="#pay-popup" class="btn-arrow fancybox" type="submit">Continuer · <span class="total"><?= WC()->cart->get_total();?></span></a>
+                        <button class="btn-arrow" type="submit">Continuer · <span class="total"><?= WC()->cart->get_total();?></span></button>
+<!--                        <a href="#pay-popup" class="btn-arrow fancybox" type="submit">Continuer · <span class="total">--><?php //= WC()->cart->get_total();?><!--</span></a>-->
                     </div>
                     <div class="input-wrap-full text-center">
                         <p>Billet non remboursable, non modifiable</p>

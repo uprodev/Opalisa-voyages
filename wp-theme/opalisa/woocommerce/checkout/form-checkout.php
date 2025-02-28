@@ -32,6 +32,7 @@ if (!empty($cart)) {
     $escales = get_field('escales_fly', $product_id);
     $bagage = get_field('bagage', $product_id);
     $class = $product->get_attribute( 'class' );
+    $quantity = $first_item['quantity'];
 }
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
@@ -54,7 +55,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                     <h6>Nombre de passagers</h6>
                     <div class="input-number ">
                         <div class="btn-count btn-count-minus"><i class=" fa-regular fa-arrow-left"></i></div>
-                        <input type="text" name="count-passengers" value="2" class="form-control"/>
+                        <input type="text" name="count-passengers" value="<?= $quantity;?>" class="form-control"/>
                         <div class="btn-count btn-count-plus"><i class="fa-regular fa-arrow-right"></i></div>
                     </div>
                     <?php

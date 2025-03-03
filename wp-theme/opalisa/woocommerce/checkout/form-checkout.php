@@ -33,6 +33,7 @@ if (!empty($cart)) {
     $bagage = get_field('bagage', $product_id);
     $class = $product->get_attribute( 'class' );
     $quantity = $first_item['quantity'];
+    $item_key = array_key_first($cart);
 }
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
@@ -52,12 +53,12 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                     <?php get_template_part('templates/content-product', null, ['product' => $product_id]);?>
 
                     <div class="item">
-                    <h6>Nombre de passagers</h6>
-                    <div class="input-number ">
-                        <div class="btn-count btn-count-minus"><i class=" fa-regular fa-arrow-left"></i></div>
-                        <input type="text" name="count-passengers" value="<?= $quantity;?>" class="form-control"/>
-                        <div class="btn-count btn-count-plus"><i class="fa-regular fa-arrow-right"></i></div>
-                    </div>
+                        <h6><?= __('Nombre de passagers', 'opalisa');?></h6>
+                        <div class="input-number ">
+                            <div class="btn-count btn-count-minus"><i class=" fa-regular fa-arrow-left"></i></div>
+                            <input type="text" name="count-passengers" data-cart-item-key="<?= $item_key;?>" value="<?= $quantity;?>" class="form-control"/>
+                            <div class="btn-count btn-count-plus"><i class="fa-regular fa-arrow-right"></i></div>
+                        </div>
                     <?php
 
                     $qtyp = $product->get_stock_quantity();
@@ -85,198 +86,12 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                         <?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
                     <?php endif; ?>
-                    <div class="item" style="display: none;">
-                        <h6>Information pour le passager 1</h6>
-                        <div class="flex mb-23">
-                            <p>Sexe :</p>
-                            <div class="input-wrap-check">
-                                <input type="radio" name="radio2" id="radio21" checked>
-                                <label for="radio21">Homme</label>
-                            </div>
-                            <div class="input-wrap-check">
-                                <input type="radio" name="radio2" id="radio22">
-                                <label for="radio22">Femme</label>
-                            </div>
-                        </div>
-                        <div class="flex jc-space">
-                            <div class="input-wrap">
-                                <label for="name">Prénom</label>
-                                <input type="text" name="name" id="name" placeholder="Ex : Mathieu" required>
-                            </div>
-                            <div class="input-wrap">
-                                <label for="name2">Nom</label>
-                                <input type="text" name="name2" id="name2" placeholder="Ex : Dupont" required>
-                            </div>
-                            <div class="input-wrap">
-                                <label for="email2">Email</label>
-                                <input type="email" name="email" id="email2" placeholder="Ex : mathieu.dupont@gmail.com" required>
-                            </div>
-                            <div class="input-wrap">
-                                <label for="number">Téléphone</label>
-                                <input type="number" name="number" id="number" placeholder="Ex : 0637467364" required>
-                            </div>
-                            <div class="input-wrap">
-                                <label for="date">Date de naissance</label>
-                                <input type="text" name="date" id="date" placeholder="Ex : 10/11/2003" required>
-                            </div>
-                            <div class="input-wrap"></div>
-                            <div class="input-wrap select-block">
-                                <label class="form-label" for="select1">Type d’identification</label>
-                                <select id="select1">
-                                    <option value="0" disabled selected>Passeport</option>
-                                    <option value="1">Passeport 1</option>
-                                    <option value="2">Passeport 2</option>
-                                    <option value="3">Passeport 3</option>
-                                </select>
-                            </div>
-                            <div class="input-wrap">
-                                <label for="number2">N° de la pièce d’identité</label>
-                                <input type="text" name="number" id="number2" placeholder="N°Passeport ou CNI" required>
-                            </div>
-                            <div class="input-wrap">
-                                <label for="date2">Date d’expiration</label>
-                                <input type="text" name="date2" id="date2" placeholder="Ex : 28/13/2032" required>
-                            </div>
-                            <div class="input-wrap select-block">
-                                <label class="form-label" for="select2">Pays émetteur</label>
-                                <select id="select2">
-                                    <option value="0" selected>France</option>
-                                    <option value="1">France 1</option>
-                                    <option value="2">France 2</option>
-                                    <option value="3">France 3</option>
-                                </select>
-                            </div>
-                            <div class="input-wrap input-wrap-file">
-                                <input type="file" name="file1" id="file1">
-                                <label for="file1">
-                                    <span class="img"><img src="img/icon-6.svg" alt=""></span>
-                                    <span class="h5">Passeport</span>
-                                    <span class="h6">Déposez votre fichier ici</span>
-                                    <span class="file-select"></span>
-                                    <span class="delete-file"></span>
-                                </label>
-                            </div>
-                            <div class="line-file"></div>
-                            <div class="input-wrap-full flex ai-start">
-                                <div class="text-wrap">
-                                    <h6>Assignation siège de préférence :</h6>
-                                    <p>Soumis à disponibilité lors de la réservation</p>
-                                </div>
-                                <div class="input-wrap-check">
-                                    <input type="radio" name="radio3" id="radio31" checked>
-                                    <label for="radio31">Hublot</label>
-                                </div>
-                                <div class="input-wrap-check">
-                                    <input type="radio" name="radio3" id="radio32">
-                                    <label for="radio32">Couloir</label>
-                                </div>
-                            </div>
-                            <div class="input-wrap input-wrap-full">
-                                <label for="number-cart">Numéro de carte de fidélité <span>(facultatif)</span></label>
-                                <input type="number" name="number-cart" id="number-cart" placeholder="Ex : carte de fidélité Air France">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item" style="display: none;">
-                        <h6>Information pour le passager 2</h6>
-                        <div class="flex mb-23">
-                            <p>Sexe :</p>
-                            <div class="input-wrap-check">
-                                <input type="radio" name="radio4" id="radio41">
-                                <label for="radio41">Homme</label>
-                            </div>
-                            <div class="input-wrap-check">
-                                <input type="radio" name="radio4" id="radio42">
-                                <label for="radio42">Femme</label>
-                            </div>
-                        </div>
-                        <div class="flex jc-space">
-                            <div class="input-wrap">
-                                <label for="name3">Prénom</label>
-                                <input type="text" name="name3" id="name3" placeholder="Ex : Mathieu" required>
-                            </div>
-                            <div class="input-wrap">
-                                <label for="name4">Nom de jeune fille</label>
-                                <input type="text" name="name4" id="name4" placeholder="Ex : Dupont" required>
-                            </div>
-                            <div class="input-wrap">
-                                <label for="email3">Email</label>
-                                <input type="email" name="email" id="email3" placeholder="Ex : mathieu.dupont@gmail.com" required>
-                            </div>
-                            <div class="input-wrap">
-                                <label for="number3">Téléphone</label>
-                                <input type="number" name="number" id="number3" placeholder="Ex : 0637467364" required>
-                            </div>
-                            <div class="input-wrap">
-                                <label for="date4">Date de naissance</label>
-                                <input type="text" name="date" id="date4" placeholder="Ex : 10/11/2003" required>
-                            </div>
-                            <div class="input-wrap"></div>
-                            <div class="input-wrap select-block">
-                                <label class="form-label" for="select3">Type d’identification</label>
-                                <select id="select3">
-                                    <option value="0" disabled selected>Passeport</option>
-                                    <option value="1">Passeport 1</option>
-                                    <option value="2">Passeport 2</option>
-                                    <option value="3">Passeport 3</option>
-                                </select>
-                            </div>
-                            <div class="input-wrap">
-                                <label for="number4">N° de la pièce d’identité</label>
-                                <input type="text" name="number" id="number4" placeholder="N°Passeport ou CNI" required>
-                            </div>
-                            <div class="input-wrap">
-                                <label for="date2">Date d’expiration</label>
-                                <input type="text" name="date3" id="date3" placeholder="Ex : 28/13/2032" required>
-                            </div>
-                            <div class="input-wrap select-block">
-                                <label class="form-label" for="select4">Pays émetteur</label>
-                                <select id="select4">
-                                    <option value="0" selected>France</option>
-                                    <option value="1">France 1</option>
-                                    <option value="2">France 2</option>
-                                    <option value="3">France 3</option>
-                                </select>
-                            </div>
-                            <div class="input-wrap input-wrap-file">
-                                <input type="file" name="file1" id="file2">
-                                <label for="file2">
-                                    <span class="img"><img src="img/icon-6.svg" alt=""></span>
-                                    <span>Passeport</span>
-                                    <span>Déposez votre fichier ici</span>
-                                    <span class="file-select"></span>
-                                    <span class="delete-file"></span>
-                                </label>
-                            </div>
-                            <div class="line-file"></div>
-                            <div class="input-wrap-full flex">
-                                <div class="text-wrap">
-                                    <h6>Assignation siège de préférence :</h6>
-                                    <p>Soumis à disponibilité lors de la réservation</p>
-                                </div>
-                                <div class="input-wrap-check">
-                                    <input type="radio" name="radio5" id="radio51">
-                                    <label for="radio51">Hublot</label>
-                                </div>
-                                <div class="input-wrap-check">
-                                    <input type="radio" name="radio5" id="radio52">
-                                    <label for="radio52">Couloir</label>
-                                </div>
-                            </div>
-                            <div class="input-wrap input-wrap-full">
-                                <label for="number-cart2">Numéro de carte de fidélité <span>(facultatif)</span></label>
-                                <input type="number" name="number-cart" id="number-cart2" placeholder="Ex : carte de fidélité Air France">
-                            </div>
-
-                        </div>
-
-                    </div>
                     <div class="input-wrap-full input-wrap-check-full input-wrap-check">
                         <input type="checkbox" name="check" id="check">
                         <label for="check">Je confirme que Opalisa Voyages n'est pas responsable dans le cas où les informations entrées ne sont pas identiques avec les informations présentes sur mon ou mes document(s) d'identité. <span>*</span> </label>
                     </div>
                     <div class="input-wrap-submit">
-                        <button class="btn-arrow" type="submit">Continuer · <span class="total"><?= WC()->cart->get_total();?></span></button>
+                        <button class="btn-arrow" type="submit"><?= __('Continuer ·', 'opalisa');?> <span class="total"><?= WC()->cart->get_total();?></span></button>
 <!--                        <a href="#pay-popup" class="btn-arrow fancybox" type="submit">Continuer · <span class="total">--><?php //= WC()->cart->get_total();?><!--</span></a>-->
                     </div>
                     <div class="input-wrap-full text-center">
@@ -291,7 +106,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                     </figure>
                     <div class="line-aside">
                         <h6><?= __('Passagers', 'opalisa');?></h6>
-                        <p>2 <?= __('Adultes', 'opalisa');?></p>
+                        <p><span class="qty-pass"><?= $quantity;?></span> <?= __('Adultes', 'opalisa');?></p>
                     </div>
                     <?php if($bagage):?>
                         <div class="line-aside">
@@ -332,13 +147,13 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 </section>
 <div id="pay-popup" class="pay-popup" style="display: none">
     <div class="popup-main">
-        <h6><img src="img/icon-7.svg" alt="">Paiement</h6>
+        <h6><img src="<?= get_template_directory_uri();?>/img/icon-7.svg" alt="">Paiement</h6>
         <form action="#" class="popup-form">
             <div class="input-wrap input-wrap-1">
                 <label for="cart-number">Numéro de carte</label>
                 <input type="text" name="cart-number" id="cart-number" placeholder="1234 1234 1234 1234" class="cart-number">
                 <div class="icon">
-                    <img src="img/icon-8.svg" alt="">
+                    <img src="<?= get_template_directory_uri();?>/img/icon-8.svg" alt="">
                 </div>
             </div>
             <div class="input-wrap input-wrap-2">

@@ -16,6 +16,15 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$cart = WC()->cart->get_cart();
+if (!empty($cart)) {
+    $first_item = reset($cart);
+
+    $product_id = $first_item['product_id'];
+    $norm = get_field('prix_normal', $product_id);
+}
+
 ?>
 <div class="shop_table woocommerce-checkout-review-order-table">
     <?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
@@ -29,10 +38,12 @@ defined( 'ABSPATH' ) || exit;
     <?php endforeach; ?>
 
     <div class="line-aside-total">
-        <div class="flex jc-space">
-            <p><?= __('Prix normal', 'opalisa');?></p>
-            <p>760,00 €/personne</p>
-        </div>
+        <?php if($norm):?>
+            <div class="flex jc-space">
+                <p><?= __('Prix normal', 'opalisa');?></p>
+                <p><?= $norm;?></p>
+            </div>
+        <?php endif; ?>
         <div class="flex jc-space cart-subtotal">
             <p><?= __('Prix Opalisa', 'opalisa');?></p>
             <p><?php wc_cart_totals_subtotal_html(); ?>/personne </p>

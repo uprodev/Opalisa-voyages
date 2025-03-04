@@ -64,3 +64,19 @@ function override_thwcfe_email_display_field_html($html, $type, $label, $value){
 
     return $html;
 }
+// Keep only last cart item
+add_action( 'woocommerce_before_calculate_totals', 'keep_only_last_cart_item', 30, 1 );
+function keep_only_last_cart_item( $cart ) {
+    if ( is_admin() && ! defined( 'DOING_AJAX' ) )
+        return;
+
+    if ( did_action( 'woocommerce_before_calculate_totals' ) >= 2 )
+        return;
+
+    $cart_items = $cart->get_cart();
+
+    if( count( $cart_items ) > 1 ){
+        $cart_item_keys = array_keys( $cart_items );
+        $cart->remove_cart_item( reset($cart_item_keys) );
+    }
+}

@@ -2404,4 +2404,22 @@ header .right a span{
 .select2-container{
   max-width: 100%;
 }
+
+.filepond--root .filepond--drop-label{
+  width: 100%;
+  outline: none !important;
+  border: none;
+  border-radius: 8px;
+  background: #f6ede4;
+  height: 56px;
+  line-height: 56px;
+  padding: 0 20px;
+  font-size: 16px;
+}
+.filepond--root .filepond--drop-label label{
+  margin: 0!important;
+}
+.filepond--credits{
+  display: none!important;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -125,6 +125,11 @@ jQuery(document).ready(function ($) {
 
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll('.thwcfe-checkout-file').forEach(input => {
-        FilePond.create(input);
+        FilePond.create(input, {
+            labelIdle: '<div class="img"><img src="/wp-content/themes/opalisa/img/icon-6.svg"' +
+                ' alt=""></div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t<div class="h5">Passeport</div>\n' +
+                '\t\t\t\t\t\t\t\t\t\t\t<div class="h6">Déposez votre fichier ici</div>\n'
+        });
     });
 });

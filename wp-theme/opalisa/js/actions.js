@@ -120,4 +120,11 @@ jQuery(document).ready(function ($) {
     let url = form.action + "?filters=" + filters.join("|");
         window.location.href = url;
     });
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.thwcfe-checkout-file').forEach(input => {
+                FilePond.create(input);
+            });
+        });
 });

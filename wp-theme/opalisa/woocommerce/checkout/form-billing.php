@@ -27,9 +27,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php
 		$fields = $checkout->get_checkout_fields( 'billing' );
 
-//        echo '<pre>';
-//        print_r($fields);
-//        echo '</pre>';
+ ;
 		foreach ( $fields as $key => $field ) {
             $second_last = substr($key, -2, 1);
             $index = substr($key, -1, 1);
@@ -51,14 +49,18 @@ defined( 'ABSPATH' ) || exit;
 
 
 <?php if ($additional_fields) {
-    foreach ($additional_fields as $index => $additional_fields_group) { ?>
+
+    foreach ($additional_fields as $index => $additional_fields_group) {
+
+
+        ?>
 
         <div class="woocommerce-billing-fields item">
             <h6><?php esc_html_e( 'Information pour le passager ', 'opalisa' ); ?><?= $index +1 ?></h6>
             <div class="woocommerce-billing-fields__field-wrapper item">
                 <?php
                 foreach ( $additional_fields_group as $key => $field ) {
-                    woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+                    woocommerce_form_field( $field['name'], $field, $checkout->get_value( $key ) );
                 }
                 ?>
             </div>

@@ -60,9 +60,6 @@ jQuery(document).ready(function ($) {
             }
         });
 
-        $input.on('change', function () {
-            location.reload();
-        });
     });
 
 
@@ -94,6 +91,8 @@ jQuery(document).ready(function ($) {
                 $('.qty-pass').text(response.data.qty);
                 $(document.body).trigger('wc_fragment_refresh');
                 $(document.body).trigger('update_checkout');
+
+                location.reload();
             },
         });
     });

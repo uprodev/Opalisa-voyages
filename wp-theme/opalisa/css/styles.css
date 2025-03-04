@@ -2284,8 +2284,8 @@ header .right a span{
 }
 
 .cart-block .item  #hide_empty_field label, .cart-block .item  #hide_empty_field input{
-  opacity: 0;
-  visibility: hidden;
+  /*opacity: 0;
+  visibility: hidden;*/
 }
 
 
@@ -2392,5 +2392,16 @@ header .right a span{
 
 .woocommerce form .form-row label span{
   display: none;
+}
+
+.woocommerce form .input-wrap-full-50{
+  width: 100%;
+}
+.woocommerce form .input-wrap-full-50 input{
+  width: 47%!important;
+}
+
+.select2-container{
+  max-width: 100%;
 }
 /*# sourceMappingURL=styles.css.map */

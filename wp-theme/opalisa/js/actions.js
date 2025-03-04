@@ -38,7 +38,7 @@ jQuery(document).ready(function ($) {
         var $btnMinus = $container.find('.btn-count-minus');
         var $btnPlus = $container.find('.btn-count-plus');
 
-        // Уменьшение
+
         $btnMinus.on('click', function () {
             var value = parseInt($input.val(), 10) || 1;
             if (value > 1) {
@@ -46,18 +46,22 @@ jQuery(document).ready(function ($) {
             }
         });
 
-        // Увеличение
+
         $btnPlus.on('click', function () {
             var value = parseInt($input.val(), 10) || 1;
             $input.val(value + 1).trigger('change');
         });
 
-        // Проверка на минимальное значение при ручном вводе
+
         $input.on('input', function () {
             var value = parseInt($(this).val(), 10);
             if (isNaN(value) || value < 1) {
                 $(this).val(1);
             }
+        });
+
+        $input.on('change', function () {
+            location.reload();
         });
     });
 

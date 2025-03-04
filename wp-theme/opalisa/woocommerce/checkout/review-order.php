@@ -20,9 +20,10 @@ defined( 'ABSPATH' ) || exit;
 $cart = WC()->cart->get_cart();
 if (!empty($cart)) {
     $first_item = reset($cart);
-
+    $product = $first_item['data'];
     $product_id = $first_item['product_id'];
     $norm = get_field('prix_normal', $product_id);
+    $regular_price = $product->get_price_html();
 }
 
 ?>
@@ -46,7 +47,7 @@ if (!empty($cart)) {
         <?php endif; ?>
         <div class="flex jc-space cart-subtotal">
             <p><?= __('Prix Opalisa', 'opalisa');?></p>
-            <p><?php wc_cart_totals_subtotal_html(); ?>/personne </p>
+            <p><?= $regular_price; ?>/personne </p>
         </div>
         <div class="flex flex-total jc-space order-total">
             <p><?= __('Prix final', 'opalisa');?></p>

@@ -64,4 +64,8 @@ jQuery(document).ready(function ($) {
     touch: false,
     autoFocus: false,
   });
+
+  $("#check").change(function () {
+    $(".input-wrap-submit").toggleClass("go", this.checked);
+  });
 });

@@ -178,6 +178,10 @@
   .content-width {
     width: 540px; }
 
+  .woocommerce form .input-wrap-full-50 input {
+    width: 100% !important;
+  }
+
   .home-banner .title .left {
     width: 100%; }
 

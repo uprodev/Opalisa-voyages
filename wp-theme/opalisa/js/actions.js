@@ -121,10 +121,10 @@ jQuery(document).ready(function ($) {
         window.location.href = url;
     });
 
+});
 
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll('.thwcfe-checkout-file').forEach(input => {
-                FilePond.create(input);
-            });
-        });
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.thwcfe-checkout-file').forEach(input => {
+        FilePond.create(input);
+    });
 });

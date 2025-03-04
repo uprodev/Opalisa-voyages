@@ -2406,20 +2406,40 @@ header .right a span{
 }
 
 .filepond--root .filepond--drop-label{
-  width: 100%;
-  outline: none !important;
-  border: none;
-  border-radius: 8px;
-  background: #f6ede4;
-  height: 56px;
-  line-height: 56px;
-  padding: 0 20px;
-  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 1px dashed #bebebe;
+  cursor: pointer;
+  height: 200px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border-radius: 5px;
+  background: #fff;
 }
 .filepond--root .filepond--drop-label label{
   margin: 0!important;
 }
 .filepond--credits{
   display: none!important;
+}
+
+.filepond--list.filepond--list{
+  top: 10px;
+}
+.filepond--root > .filepond--panel, .filepond--drip{
+  background: #fff!important;
+  opacity: 1!important;
+}
+.cart-block .item .woocommerce-input-wrapper label>*{
+  display: block!important;
 }
 /*# sourceMappingURL=styles.css.map */

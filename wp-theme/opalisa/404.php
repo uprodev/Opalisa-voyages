@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-    <section class="block-404">
+    <section class="block-404 ">
         <div class="container-fluid text-center fade-in-wrapper">
 
             <?php if(get_field('title_404', 'options')):?>

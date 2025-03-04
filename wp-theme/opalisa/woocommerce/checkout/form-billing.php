@@ -19,15 +19,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <div class="woocommerce-billing-fields item">
-	<?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
-
-		<h6><?php esc_html_e( 'Information pour le passager 1', 'opalisa' ); ?></h6>
-
-	<?php else : ?>
-
-        <h6><?php esc_html_e( 'Information pour le passager 1', 'opalisa' ); ?></h6>
-
-	<?php endif; ?>
+    <h6><?php esc_html_e( 'Information pour le passager 1', 'opalisa' ); ?></h6>
 
 	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
@@ -35,14 +27,45 @@ defined( 'ABSPATH' ) || exit;
 		<?php
 		$fields = $checkout->get_checkout_fields( 'billing' );
 
+//        echo '<pre>';
+//        print_r($fields);
+//        echo '</pre>';
 		foreach ( $fields as $key => $field ) {
+            $second_last = substr($key, -2, 1);
+            $index = substr($key, -1, 1);
+            if ("_" == $second_last) {
+                $additional_fields[$index][] = $field;
+                continue;
+            }
+
+
 			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
 		}
 		?>
 	</div>
 
+
+
 	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>
+
+
+<?php if ($additional_fields) {
+    foreach ($additional_fields as $index => $additional_fields_group) { ?>
+
+        <div class="woocommerce-billing-fields item">
+            <h6><?php esc_html_e( 'Information pour le passager ', 'opalisa' ); ?><?= $index +1 ?></h6>
+            <div class="woocommerce-billing-fields__field-wrapper item">
+                <?php
+                foreach ( $additional_fields_group as $key => $field ) {
+                    woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+                }
+                ?>
+            </div>
+        </div>
+
+    <?php } ?>
+<?php } ?>
 
 <?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
 	<div class="woocommerce-account-fields">
